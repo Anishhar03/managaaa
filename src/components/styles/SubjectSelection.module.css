@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #e0f7fa;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #00796b;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .title:hover {
+    color: #004d40;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .inputField:focus {
+    border-color: #00796b;
+    outline: none;
+  }
+  
+  .addButton {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .addButton:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+  }
+  
+  .addButton:active {
+    transform: scale(0.98);
+  }
+  
