@@ -4,6 +4,11 @@ import styles from './styles/AttendanceForm.module.css';
 const AttendanceForm = ({ subjects, setSubjects }) => {
   const [notification, setNotification] = useState('');
 
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => setNotification(''), 3000); // Hide notification after 3 seconds
+  };
+
   const handleAttendance = (index, isPresent) => {
     const updatedSubjects = [...subjects];
     updatedSubjects[index].total += 1;
@@ -13,8 +18,7 @@ const AttendanceForm = ({ subjects, setSubjects }) => {
     setSubjects(updatedSubjects);
     localStorage.setItem('subjects', JSON.stringify(updatedSubjects));
 
-    setNotification(isPresent ? 'Attendance marked as Present!' : 'Attendance marked as Absent!');
-    setTimeout(() => setNotification(''), 3000); // Hide notification after 3 seconds
+    showNotification(isPresent ? 'Attendance marked as Present!' : 'Attendance marked as Absent!');
   };
 
   const handleClearAttendance = (index) => {
@@ -24,25 +28,24 @@ const AttendanceForm = ({ subjects, setSubjects }) => {
     setSubjects(updatedSubjects);
     localStorage.setItem('subjects', JSON.stringify(updatedSubjects));
 
-    setNotification('Attendance cleared!');
-    setTimeout(() => setNotification(''), 3000); // Hide notification after 3 seconds
+    showNotification('Attendance cleared!');
   };
 
   return (
     <div className={styles.attendanceContainer}>
-      <h2 className={styles.title}>Attendance Form</h2>
-      <div className={notification ? styles.notification + ' ' + 'show' : styles.notification}>
+      <h2 className={styles.title}>Attendance Tracker</h2>
+      <div className={notification ? styles.notification + ' ' + styles.show : styles.notification}>
         {notification}
       </div>
       {subjects.map((subject, index) => {
-        const attendance = ((subject.attended / subject.total) * 100 || 0).toFixed(2);
+        const attendancePercentage = ((subject.attended / subject.total) * 100 || 0).toFixed(2);
         return (
           <div key={index} className={styles.subjectCard}>
             <h3 className={styles.subjectName}>{subject.name}</h3>
             <p className={styles.subjectStats}>Total Classes: {subject.total}</p>
             <p className={styles.subjectStats}>Classes Attended: {subject.attended}</p>
             <p className={styles.subjectStats}>Absent: {subject.total - subject.attended}</p>
-            <p className={styles.subjectStats}>Attendance: {attendance}%</p>
+            <p className={styles.subjectStats}>Attendance: {attendancePercentage}%</p>
             <button
               className={styles.attendanceButton}
               onClick={() => handleAttendance(index, true)}

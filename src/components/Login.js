@@ -46,9 +46,8 @@ const Login = ({ onLogin }) => {
           </button>
         </form>
         <div className="signup-link">
-          <p className="signup-text">
-            Don't have an account? <a href="#" className="signup-link-text">Sign Up</a>
-          </p>
+          
+          <p className="made-by">Created by AK</p>
         </div>
       </div>
     </div>
